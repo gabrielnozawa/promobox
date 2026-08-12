@@ -1,9 +1,17 @@
 import sqlite3
-from datetime import datetime
-DB='data/promobox.db'
+from pathlib import Path
+import os
+
+# Banco em uma pasta gravável no Streamlit Cloud
+DATA_DIR = Path(os.getenv("PROMOBOX_DATA_DIR", "/tmp/promobox"))
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+DB = DATA_DIR / "promobox.db"
 
 def db():
-    c=sqlite3.connect(DB); c.row_factory=sqlite3.Row; return c
+    c = sqlite3.connect(DB)
+    c.row_factory = sqlite3.Row
+    return c
 
 def init_db():
     with db() as c:
