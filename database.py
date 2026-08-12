@@ -1,6 +1,7 @@
 import sqlite3
 from pathlib import Path
 import os
+from datetime import datetime
 
 # Banco em uma pasta gravável no Streamlit Cloud
 DATA_DIR = Path(os.getenv("PROMOBOX_DATA_DIR", "/tmp/promobox"))
